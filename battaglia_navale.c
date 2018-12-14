@@ -15,7 +15,7 @@ int main()
     int campo_di_attacco[MAX][MAX];
     int campo_di_attacco2[MAX][MAX];
     int comando;
-    int numero = 0;
+    int numero = 6;
 
     //variabili per cordinate
     int cordinataNUM_riga;
