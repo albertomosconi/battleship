@@ -70,7 +70,7 @@ int main()
             printf("scelta non disponibile");
 
         else
-        {
+        { //posizioniozamenti di tutte le navi
             if (comando == 2)
             { //posizionare cacciatorpediniere
                 stampacampo(campo);
@@ -108,6 +108,7 @@ int main()
 
                 num_cacciatorpediniere_da_posizionare--;
                 num_navi_da_posizionare--;
+                num_navi_affondate_Gioc2++;
             }
 
             if (comando == 3)
@@ -169,6 +170,7 @@ int main()
 
                 num_sottomarini_da_posizionare--;
                 num_navi_da_posizionare--;
+                num_navi_affondate_Gioc2++;
             }
 
             if (comando == 4)
@@ -234,6 +236,7 @@ int main()
 
                 num_corazzieri_da_posizionare--;
                 num_navi_da_posizionare--;
+                num_navi_affondate_Gioc2++;
             }
 
             if (comando == 5)
@@ -303,6 +306,7 @@ int main()
 
                 num_portaerei_da_posizionare--;
                 num_navi_da_posizionare--;
+                num_navi_affondate_Gioc2++;
             }
 
             if (num_navi_da_posizionare == 0)
@@ -398,6 +402,7 @@ int main()
 
                 num_cacciatorpediniere_da_posizionare--;
                 num_navi_da_posizionare--;
+                num_navi_affondate_Gioc1++;
             }
 
             if (comando == 3)
@@ -459,6 +464,7 @@ int main()
 
                 num_sottomarini_da_posizionare--;
                 num_navi_da_posizionare--;
+                num_navi_affondate_Gioc1++;
             }
 
             if (comando == 4)
@@ -524,6 +530,7 @@ int main()
 
                 num_corazzieri_da_posizionare--;
                 num_navi_da_posizionare--;
+                num_navi_affondate_Gioc1++;
             }
 
             if (comando == 5)
@@ -591,6 +598,7 @@ int main()
 
                 num_portaerei_da_posizionare--;
                 num_navi_da_posizionare--;
+                num_navi_affondate_Gioc1++;
             }
 
             if (num_navi_da_posizionare == 0)
