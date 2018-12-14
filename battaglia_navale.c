@@ -316,6 +316,9 @@ int main()
         }
     } while (num_navi_da_posizionare != 0);
     //
+    a = 'a';
+    printf("\nGiocatore1 premi invio e abbandona la postazione\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+    scanf("%*c%c", &a);
 
     /********************************************************************************************************
     *                                  Giocatore 2 posiziona le navi                                        *
@@ -646,7 +649,7 @@ int main()
         stampacampo(campo);
         char c;
         printf("pronto all'attacco?(premi invio)\n");
-        scanf("%*c%c", &c);
+        scanf("%c", &c);
         stampacampo(campo_di_attacco);
 
         printf("scegli la casella da colpiere(prima la lettere e poi il numero): ");
