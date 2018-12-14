@@ -28,6 +28,8 @@ int main()
     int num_sottomarini_da_posizionare = 3;
     int num_corazzieri_da_posizionare = 2;
     int num_portaerei_da_posizionare = 1;
+    int num_navi_affondate_Gioc1 = 0;
+    int num_navi_affondate_Gioc2 = 0;
 
     //
 
@@ -599,13 +601,11 @@ int main()
     } while (num_navi_da_posizionare != 0);
     //
 
-    /*******************************************************************************************************
-    *                                  Fase di combattimento                                               *
-    ********************************************************************************************************/
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //                                            FASE DI COMBTTIMENTO                                        //
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    printf("\n\n\n\n\n\n\n\n\n\n\n\n\n Bene! ora tutte le navi sono in posizione\n\n\nGiocatore 1 a te la prima mossa\n");
-
-    //compilazione del campo di attacco
+    //compilazione del campo di attacco 1
     for (int r = 0; r < MAX; r++)
     {
         for (int c = 0; c < MAX; c++)
@@ -615,33 +615,84 @@ int main()
     }
     //
 
-    //Colpito o Mancato
-    printf("\necco le tue navi:\n");
-    stampacampo(campo);
-    char c;
-    printf("pronto all'attacco?(premi invio)\n");
-    scanf("%*c%c", &c);
-    stampacampo(campo_di_attacco);
-
-    printf("scegli la casella da colpiere(prima la lettere e poi il numero): ");
-    scanf("%c %d", &cordinaLETT_colonna, &cordinataNUM_riga);
-    cordina_converita_num = converti_lettere_in_numeri(cordinaLETT_colonna);
-
-    if (campo2[cordinataNUM_riga][cordina_converita_num] > 0 && campo2[cordinataNUM_riga][cordina_converita_num] <= 5)
+    //compilazione del campo di attacco giocatore 2
+    for (int r = 0; r < MAX; r++)
     {
-        printf("\nCOLPITA!\n");
-        campo2[cordinataNUM_riga][cordina_converita_num] = COLPITA;
-        campo_di_attacco[cordinataNUM_riga][cordina_converita_num] = COLPITA;
+        for (int c = 0; c < MAX; c++)
+        {
+            campo_di_attacco2[r][c] = 0;
+        }
     }
-    else
-    {
-        printf("\nBersaglio mancato...\n");
-        campo2[cordinataNUM_riga][cordina_converita_num] = MANCATO;
-        campo_di_attacco[cordinataNUM_riga][cordina_converita_num] = MANCATO;
-    }
-    stampacampo(campo_di_attacco);
     //
 
+    do //ciclo per attacco
+    {
+        /*******************************************************************************************************
+        *                                  Fase di combattimento(giocatore 1)                                  *
+        ********************************************************************************************************/
+
+        printf("\n\n\n\n\n\n\n\n\n\n\n\n\n Bene! ora tutte le navi sono in posizione\n\n\nGiocatore 1 a te la prima mossa\n");
+
+        //Colpito o Mancato
+        printf("\necco le tue navi:\n");
+        stampacampo(campo);
+        char c;
+        printf("pronto all'attacco?(premi invio)\n");
+        scanf("%*c%c", &c);
+        stampacampo(campo_di_attacco);
+
+        printf("scegli la casella da colpiere(prima la lettere e poi il numero): ");
+        scanf("%c %d", &cordinaLETT_colonna, &cordinataNUM_riga);
+        cordina_converita_num = converti_lettere_in_numeri(cordinaLETT_colonna);
+
+        if (campo2[cordinataNUM_riga][cordina_converita_num] > 0 && campo2[cordinataNUM_riga][cordina_converita_num] <= 5)
+        {
+            printf("\nCOLPITA!\n");
+            campo2[cordinataNUM_riga][cordina_converita_num] = COLPITA;
+            campo_di_attacco[cordinataNUM_riga][cordina_converita_num] = COLPITA;
+        }
+        else
+        {
+            printf("\nBersaglio mancato...\n");
+            campo2[cordinataNUM_riga][cordina_converita_num] = MANCATO;
+            campo_di_attacco[cordinataNUM_riga][cordina_converita_num] = MANCATO;
+        }
+        stampacampo(campo_di_attacco);
+        //
+
+        /*******************************************************************************************************
+        *                                  Fase di combattimento(giocatore 2)                                  *
+        ********************************************************************************************************/
+
+        printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\nGiocatore 2 tocca a te\n");
+
+        //Colpito o Mancato
+        printf("\necco le tue navi:\n");
+        stampacampo(campo2);
+        c = 'c'; //serve solo per premere invio
+        printf("pronto all'attacco?(premi invio)\n");
+        scanf("%*c%c", &c);
+        stampacampo(campo_di_attacco2);
+
+        printf("scegli la casella da colpiere(prima la lettere e poi il numero): ");
+        scanf("%c %d", &cordinaLETT_colonna, &cordinataNUM_riga);
+        cordina_converita_num = converti_lettere_in_numeri(cordinaLETT_colonna);
+
+        if (campo[cordinataNUM_riga][cordina_converita_num] > 0 && campo[cordinataNUM_riga][cordina_converita_num] <= 5)
+        {
+            printf("\nCOLPITA!\n");
+            campo[cordinataNUM_riga][cordina_converita_num] = COLPITA;
+            campo_di_attacco2[cordinataNUM_riga][cordina_converita_num] = COLPITA;
+        }
+        else
+        {
+            printf("\nBersaglio mancato...\n");
+            campo[cordinataNUM_riga][cordina_converita_num] = MANCATO;
+            campo_di_attacco2[cordinataNUM_riga][cordina_converita_num] = MANCATO;
+        }
+        stampacampo(campo_di_attacco2);
+        //
+    } while (num_navi_affondate_Gioc1 == 0 || num_navi_affondate_Gioc2 == 0);
     return 0;
 }
 
