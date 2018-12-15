@@ -95,6 +95,7 @@ GRIGLIA posizionanavi(GRIGLIA griglia)
         scanf("\n%d", &colonnacorrente);
         printf("\nin che colonna la vuoi mettere?");
         scanf("\n%d", &rigacorrente);
+        // cosa a caso
         griglia.griglia[colonnacorrente - 1][rigacorrente - 1] = 4;
         printf("\ninserisci le coordinate del terzo punto");
         printf("\nin che riga la vuoi inserire?");
